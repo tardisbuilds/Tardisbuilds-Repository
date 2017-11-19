@@ -1,0 +1,10 @@
+Welcome To Tardis Fixtures
+------------------------------------------------------------------------------------
+ 
+This Add-on searches other add-on's to find a stream for your Sporting Events
+ 
+For Best Results add as many sources as possible, Refresh/Recreate your ini file regularly
+ 
+Tardis Fixtures does not have any of its own streams so if a stream doesn't work, it will be down in the addon.
+ 
+Enjoy :)

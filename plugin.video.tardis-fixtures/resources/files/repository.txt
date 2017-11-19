@@ -1,0 +1,17 @@
+[COLOR red]Information[/COLOR]
+
+[COLOR blue]We can see that you do not have the official Tardis repository installed on your system.
+[/COLOR]
+[COLOR white]Having the repository installed is vital, for you to get updates to Tardis Fixtures.
+
+You can get the Tardis repository by addon the following source to your Kodi file manager.[/COLOR]
+
+[COLOR green][B]http://repo.tardisbuilds.com/[/B][/COLOR]
+
+[COLOR white]Once you have added the source go to Addon>Install from ZIP file and select the repository.Tardisrepo-1.0.zip
+
+Once you have installed the repository you will be able to open the addon.
+
+The addon will now close.
+
+Thank you![/COLOR]

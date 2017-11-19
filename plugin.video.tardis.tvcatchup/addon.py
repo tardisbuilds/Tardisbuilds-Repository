@@ -1,60 +1,75 @@
-from urllib import quote
+import sys
+import os.path
+# force the lib directory in to the python path
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), "lib"))
 
-from xbmcswift2 import Plugin
-
-CHANNEL_LIST = {
-    1: ("BBC One", "http://tvcatchup.com/watch/bbcone"),
-    2: ("BBC Two", "http://tvcatchup.com/watch/bbctwo"),
-    3: ("ITV", "http://tvcatchup.com/watch/itv"),
-    4: ("Channel 4", "http://tvcatchup.com/watch/channel4"),
-    5: ("Channel 5", "http://tvcatchup.com/watch/channel5"),
-    17: ("BBC News", "http://tvcatchup.com/watch/bbcnews"),
-    18: ("CBBC", "http://tvcatchup.com/watch/cbbc"),
-    24: ("CBeebies", "http://tvcatchup.com/watch/cbeebies"),
-    12: ("BBC3", "http://tvcatchup.com/watch/bbc3"),
-    13: ("BBC4", "http://tvcatchup.com/watch/bbc4"),
-    501: ("MillenniumTV", "http://tvcatchup.com/watch/millenniumtv"),
-    73: ("Quest", "http://tvcatchup.com/watch/quest"),
-    37: ("VIVA", "http://tvcatchup.com/watch/viva"),
-    31: ("BBC Parliament", "http://tvcatchup.com/watch/bbcparliament"),
-    78: ("RT", "http://tvcatchup.com/watch/rt"),
-    65: ("BBC Red Button", "http://tvcatchup.com/watch/bbcredbutton"),
-    95: ("Gala TV", "http://tvcatchup.com/watch/galatv"),
-    151: ("Sail TV", "http://tvcatchup.com/watch/sailtv"),
-    177: ("Sub TV", "http://tvcatchup.com/watch/subtv"),
-    158: ("Community Channel", "http://tvcatchup.com/watch/communitychannel"),
-    144: ("S4C", "http://tvcatchup.com/watch/s4c"),
-	205: ("TV Warehouse", "http://tvcatchup.com/watch/tvwarehouse"),
-	33: ("QVC", "http://tvcatchup.com/watch/qvc"),
-	185: ("QVC Beauty", "http://tvcatchup.com/watch/qvcbeauty"),
-	186: ("QVC Extra", "http://tvcatchup.com/watch/qvcextra"),
-	187: ("QVC Style", "http://tvcatchup.com/watch/qvcstyle"),
-	50: ("Al Jazeera", "http://tvcatchup.com/watch/aljazeera"),
-	146: ("CCTV News", "http://tvcatchup.com/watch/cctv-news"),
-	154: ("Ideal World", "http://tvcatchup.com/watch/ideal-world"),
-	155: ("Ideal Extra", "http://tvcatchup.com/watch/ideal-extra"),
-	156: ("Create and Craft", "http://tvcatchup.com/watch/create-and-craft"),
-	157: ("Craft Extra", "http://tvcatchup.com/watch/craft-extra")
-#	211: ("BBC Olympics 1", "http://tvcatchup.com/watch/bbcolympics1"),
-#	212: ("BBC Olympics 2", "http://tvcatchup.com/watch/bbcolympics2"),
-#	213: ("BBC Olympics 3", "http://tvcatchup.com/watch/bbcolympics3"),
-#	214: ("BBC Olympics 4", "http://tvcatchup.com/watch/bbcolympics4"),
-#	215: ("BBC Olympics 5", "http://tvcatchup.com/watch/bbcolympics5"),
-#	216: ("BBC Olympics 6", "http://tvcatchup.com/watch/bbcolympics6"),
-#	217: ("BBC Olympics 7", "http://tvcatchup.com/watch/bbcolympics7"),
-#	218: ("BBC Olympics 8", "http://tvcatchup.com/watch/bbcolympics8")
-}
+import xbmcgui
+from retrying import RetryError
+from tvcatchup import TVCatchup, TVCatchupBlocked
+from simpleplugin import Plugin
 
 plugin = Plugin()
+_ = plugin.initialize_gettext()
 
 
-@plugin.route('/')
-def index():
-    return [{'label': info[0],
-             'path': "plugin://plugin.video.livestreamer/play?url={0}".format(quote(info[1])),
-             'is_playable': True,
-             'thumbnail': 'http://tvcatchup.com/tvc-static//images/channels/v3/{0}.png'.format(cid)}
-            for cid, info in CHANNEL_LIST.items()]
+@plugin.action()
+def play(params):
+    channel_id = params.get("id") or 1
+    region = TVCatchup.lookup_region(plugin.get_setting("region"))
+    api = TVCatchup(region)
 
-if __name__ == '__main__':
+    try:
+        url = api.stream(channel_id)
+
+        if url:
+            return Plugin.resolve_url(play_item={
+                "path": url,
+                "label": params.get("name"),
+                "icon": params.get("logo"),
+                "info": {"Video": {"Plot": params.get("plot")}}
+            })
+        else:
+            plugin.log_error("Failed to open stream {0} (Could not find stream URL)".format(params.get("slug")))
+    except RetryError as err:
+        plugin.log_error("Failed to open stream {0} ({1})".format(params.get("slug"), err.last_attempt))
+    except TVCatchupBlocked as err:
+        plugin.log_error("Failed to open stream {0} (Blocked: {1})".format(params.get("slug"), err))
+
+    xbmcgui.Dialog().notification(_("Warning"),
+                                  _("Could not open stream for {0}!").format(params.get("name") or _("Unknown")))
+    return Plugin.resolve_url(succeeded=False)
+
+
+@plugin.action()
+def root(params):
+    items = []
+
+    region = TVCatchup.lookup_region(plugin.get_setting("region"))
+    api = TVCatchup(region)
+
+    for channel in api.channels():
+        items.append({
+            "label": channel["name"],
+            "label2": channel["epg"]["programme_title"],
+            "url": plugin.get_url(action="play",
+                                  id=channel["id"],
+                                  name=channel["name"],
+                                  logo=channel["logo"],
+                                  slug=channel["slug"],
+                                  plot=channel["epg"]["programme_desc"],
+                                  title=channel["epg"]["programme_title"]
+                                  ),
+            "thumb": channel["logo"],
+            "is_playable": channel["online"] == 1,
+            "info": {
+                "Video": {
+                    "Plot": channel["epg"]["programme_desc"],
+                }
+            }
+        })
+
+    return Plugin.create_listing(items, sort_methods=(0, ), content="movies")
+
+
+if __name__ == "__main__":
     plugin.run()

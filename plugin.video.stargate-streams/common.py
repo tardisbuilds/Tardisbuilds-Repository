@@ -1,5 +1,5 @@
 #         Thanks to PlayList Loader for this great code work, Its added an extra element to our addon      #
-import urllib, urllib2, os, io, xbmc, xbmcaddon, xbmcgui, json, re
+import urllib, urllib2, os, io, xbmc, xbmcaddon, xbmcgui, json, re, time
 
 AddonID = 'plugin.video.stargate-streams'
 Addon = xbmcaddon.Addon(AddonID)
@@ -30,6 +30,23 @@ def OpenURL(url, headers={}, user_data={}, justCookie=False):
 	response.close()
 	return data
 
+def OPEN_URL_NORMAL(url):
+    req = urllib2.Request(url)
+    req.add_header('User-Agent', 'python-requests/2.9.1')
+    response = urllib2.urlopen(req)
+    link=response.read()
+    response.close()
+    return link   
+
+def addItem(name,url,mode,iconimage,fanart,description):
+	u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&fanart="+urllib.quote_plus(fanart)
+	ok=True
+	liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
+	liz.setInfo( type="Video", infoLabels={ "Title": name } )
+	liz.setProperty( "Fanart_Image", fanart )
+	ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
+	return ok
+
 def ReadFile(fileName):
 	try:
 		f = open(fileName,'r')
@@ -49,7 +66,7 @@ def ReadList(fileName):
 		if os.path.isfile(fileName):
 			import shutil
 			shutil.copyfile(fileName, "{0}_bak.txt".format(fileName[:fileName.rfind('.')]))
-			xbmc.executebuiltin('Notification({0}, Cannot read file: "{1}". \nBackup createad, {2}, {3})'.format(AddonName, os.path.basename(fileName), 5000, icon))
+			xbmc.executebuiltin('Notification({0}, Cannot read file: "{1}". \nBackup created, {2}, {3})'.format(AddonName, os.path.basename(fileName), 5000, icon))
 		content=[]
 
 	return content

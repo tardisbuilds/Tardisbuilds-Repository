@@ -47,6 +47,8 @@ ALL_VIEW_CODES={
         'skin.droid': 50, # List
         'skin.quartz': 50, # List
         'skin.re-touched': 50, # List
+		'skin.xonfluence': 515,
+		'skin.fuse.neue': 515,
     },
     'thumbnail': {
         'skin.confluence': 500, # Thumbnail
@@ -54,6 +56,8 @@ ALL_VIEW_CODES={
         'skin.droid': 51, # Big icons
         'skin.quartz': 51, # Big icons
         'skin.re-touched': 500, #Thumbnail
+		'skin.xonfluence': 515,
+		'skin.fuse.neue': 51,
     },
     'movies': {
         'skin.confluence': 500, # Thumbnail 515, # Media Info 3
@@ -61,6 +65,11 @@ ALL_VIEW_CODES={
         'skin.droid': 51, # Big icons
         'skin.quartz': 52, # Media info
         'skin.re-touched': 500, #Thumbnail
+		'skin.xonfluence': 515,
+		'skin.fuse.neue': 54,
+		'skin.eminence.2': 53,
+		'skin.eminence.mod': 51,
+		'skin.aeon.nox.silvo': 507,
     },
     'tvshows': {
         'skin.confluence': 500, # Thumbnail 515, # Media Info 3
@@ -68,6 +77,8 @@ ALL_VIEW_CODES={
         'skin.droid': 51, # Big icons
         'skin.quartz': 52, # Media info
         'skin.re-touched': 500, #Thumbnail
+		'skin.xonfluence': 515,
+		'skin.fuse.neue': 51,
     },
     'seasons': {
         'skin.confluence': 50, # List
@@ -75,13 +86,17 @@ ALL_VIEW_CODES={
         'skin.droid': 50, # List
         'skin.quartz': 52, # Media info
         'skin.re-touched': 50, # List
+		'skin.xonfluence': 515,
+		'skin.fuse.neue': 51,
     },
     'episodes': {
-        'skin.confluence': 504, # Media Info
+        'skin.confluence': 50, # Media Info
         'skin.aeon.nox': 518, # Infopanel
         'skin.droid': 50, # List
         'skin.quartz': 52, # Media info
         'skin.re-touched': 550, # Wide
+		'skin.xonfluence': 515,
+		'skin.fuse.neue': 51,
     },
 }
 def log(message): xbmc.log(message) # Write something on XBMC log
@@ -179,6 +194,7 @@ def find_single_match(text,pattern): # Parse string and extracts first match as 
     except: result=""
     return result
 def add_item(action="",title="",plot="",url="",thumbnail="",fanart="",show="",episode="",extra="",page="",info_labels=None,isPlayable=False,folder=True):
+    contextMenuItems = []
     _log("add_item action=["+action+"] title=["+title+"] url=["+url+"] thumbnail=["+thumbnail+"] fanart=["+fanart+"] show=["+show+"] episode=["+episode+"] extra=["+extra+"] page=["+page+"] isPlayable=["+str(isPlayable)+"] folder=["+str(folder)+"]")
     listitem=xbmcgui.ListItem(title,iconImage="DefaultVideo.png",thumbnailImage=thumbnail)
     if info_labels is None: info_labels={"Title":title,"FileName":title,"Plot":plot}
@@ -187,6 +203,16 @@ def add_item(action="",title="",plot="",url="",thumbnail="",fanart="",show="",ep
     if url.startswith("plugin://"): itemurl=url; listitem.setProperty('IsPlayable','true'); xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=itemurl,listitem=listitem,isFolder=folder)
     elif isPlayable: listitem.setProperty("Video","true"); listitem.setProperty('IsPlayable','true'); itemurl='%s?action=%s&title=%s&url=%s&thumbnail=%s&plot=%s&extra=%s&page=%s' % (sys.argv[0],action,urllib.quote_plus(title),urllib.quote_plus(url),urllib.quote_plus(thumbnail),urllib.quote_plus(plot),urllib.quote_plus(extra),urllib.quote_plus(page)); xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=itemurl,listitem=listitem,isFolder=folder)
     else: itemurl='%s?action=%s&title=%s&url=%s&thumbnail=%s&plot=%s&extra=%s&page=%s' % (sys.argv[0],action,urllib.quote_plus(title),urllib.quote_plus(url),urllib.quote_plus(thumbnail),urllib.quote_plus(plot),urllib.quote_plus(extra),urllib.quote_plus(page)); xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=itemurl,listitem=listitem,isFolder=folder)
+
+def addItem(name,url,mode,iconimage,fanart):
+	u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)+"&fanart="+urllib.quote_plus(fanart)
+	ok=True
+	liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
+	liz.setInfo( type="Video", infoLabels={ "Title": name } )
+	liz.setProperty( "Fanart_Image", fanart )
+	ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
+	return ok
+
 def close_item_list(): _log("close_item_list"); xbmcplugin.endOfDirectory(handle=int(sys.argv[1]),succeeded=True)
 def play_resolved_url(url):
     _log("play_resolved_url ["+url+"]"); listitem=xbmcgui.ListItem(path=url); listitem.setProperty('IsPlayable','true')
@@ -197,7 +223,7 @@ def direct_play(url,title=""):
     except: xlistitem=xbmcgui.ListItem(title,iconImage="DefaultVideo.png",)
     xlistitem.setInfo("video",{"Title":title}); playlist=xbmc.PlayList(xbmc.PLAYLIST_VIDEO); playlist.clear(); playlist.add(url,xlistitem); player_type=xbmc.PLAYER_CORE_AUTO; xbmcPlayer=xbmc.Player(player_type); xbmcPlayer.play(playlist)
 def show_picture(url):
-    local_folder=os.path.join(get_data_path(),"images")
+    local_folder=os.path.join(get_data_path(),"art")
     if not os.path.exists(local_folder):
         try: os.mkdir(local_folder)
         except: pass
