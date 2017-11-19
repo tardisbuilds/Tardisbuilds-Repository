@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.tardis.tv" name="Tardis TV" version="1.0.8" provider-name="War Doctor">
+    <requires>
+        <import addon="xbmc.python" version="2.14.0"/>
+        <import addon="script.module.requests" version="2.3.0"/>
+        <import addon="script.tardisepg.tools" version="1.0.8"/>
+        <import addon="script.tardisepg" version="1.0.8"/>		
+        <import addon="plugin.program.super.favourites" version="1.0.43"/>
+    </requires>
+
+    <extension point="xbmc.python.script" library="default.py">
+        <provides>executable</provides>
+    </extension>
+
+    <extension point="xbmc.service" library="service.py" start="login" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">A powerful EPG add-on with many extra features. Streaming support via multiple live TV addons.</summary>
+        <description lang="en">A comprehensive EPG that is compatible with many popular live TV addons. [CR]Up to 7 days of listings with automatic triggering of your favourite live TV addons.[CR]As well as the EPG. Props to Spoyser, Dixie Dean and Twinther for the original code used in this guide.</description>
+        <platform>all</platform>
+  </extension>
+</addon>

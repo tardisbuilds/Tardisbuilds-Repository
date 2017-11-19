@@ -1,0 +1,26 @@
+v1.0.8
+	-Code Tidy.
+	-Version bump.
+
+v1.0.7
+	-Code tidied.
+	-New server source.
+
+v1.0.6
+	-Tweaked for release.
+	-New logo courtesy of The Doctor.
+
+
+v1.0.5
+	-Code Updated.
+	-Release Version.
+
+v1.0.4-beta
+	-Code updated and tidied.
+	-Updated server.
+
+v1.0.3-beta
+	-Little code update.
+
+v1.0.2-beta
+	-Initial Beta release for Tardis Builds.

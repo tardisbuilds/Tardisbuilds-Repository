@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addons>
+<addon id="plugin.program.chameleoncircuit" name="Chameleon Circuit" version="1.0.2" provider-name="Tardis Builds">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Download new intros and background packs for Tardis Builds</summary>
+    <description lang="en">Download new Intro Videos and Background packs for Tardis Builds</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+<addon id="plugin.program.tardis.notifications" version="1.0.2"
+       name="Tardis Notify" provider-name="Tardisbuilds">
+  <requires>
+  	<import addon="xbmc.python" version="2.1.0"/>
+  	<import addon="script.module.addon.common" optional="true" />
+  </requires>
+  <extension point="xbmc.python.script" library="default.py">
+    <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.service" library="service.py" start="startup">
+  </extension>
+  <extension point="xbmc.addon.metadata">
+  	<summary>Tardis News</summary>
+  	<description>Receive Important Tardis Notifications. Unsubscribe within Add-on Settings.</description>
+  	<disclaimer>We take no responsibility for any problems this plugin might in any way, form, shape or size cause.</disclaimer>
+  	<language>en</language>
+  	<platform>all</platform>
+  	<forum>facebook.com/groups/tardisbuilds</forum>
+  	<website>-</website>
+  	<source></source>
+  	<email></email>
+  </extension>
+</addon>
+<addon id="plugin.program.TardisWizard" name="Tardis Wizard" version="2.0.9" provider-name="TheDoctor">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+	<import addon="plugin.video.stargate-streams" version="1.0.5"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.service" library="startup.py" start="startup" />
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Tardis Wizard</summary>
+    <description lang="en">Tardis Wizard allows you to get access to the latest Tardis Custom Builds.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+<addon id="plugin.video.CombatCorner"
+	name="Combat Corner"
+	version="1.0.1"
+	provider-name="TardisBuilds">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.addon.common" version="2.0.0"/>
+    <import addon="plugin.video.youtube" version="5.0.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Combat Sports Channels</summary>
+    <description lang="en">Links to various Combat/Fight sports Channels on YouTube</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+<addon id="plugin.video.HuntersHideout"
+	name="Hunters Hideout"
+	version="1.0.3"
+	provider-name="TardisBuilds">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.addon.common" version="2.0.0"/>
+    <import addon="plugin.video.youtube" version="5.0.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Hunting/Shooting Channels</summary>
+    <description lang="en">Links to Hunting and Shooting Channels on YouTube</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+<addon id="plugin.video.livestreamer" name="livestreamer" version="1.12.3" provider-name="blxd">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.xbmcswift2" version="2.4.0"/>
+    <import addon="script.module.requests" version="2.6.0"/>
+    <import addon="script.module.futures" version="2.2.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="addon.py" />
+  <extension point="xbmc.service" library="service.py" start="startup"/>
+  <extension point="xbmc.python.module" library="resources/site-packages/livestreamer/src/livestreamer" />
+  <extension point="xbmc.addon.metadata">
+    <platform>all</platform>
+    <language></language>
+    <summary>livestreamer wrapper</summary>
+    <description>Plays videos from sites that are supported by livestreamer</description>
+    <platform>all</platform>
+    <license>Simplified BSD</license>
+    <source>https://github.com/chrippa/livestreamer.git</source>
+    <website>http://livestreamer.io</website>
+  </extension>
+</addon>
+<addon id="plugin.video.stargate-streams"
+       name="Stargate Streams"
+       version="1.0.6b"
+       provider-name="Wardoctor">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource"
+            library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Stargate Streams</summary>
+    <language>en</language>
+    <description lang="en">Stargate Streams official addon - Streams that are outta of this World.</description>
+     <platform>all</platform>
+  </extension>
+</addon>
+<addon id="plugin.video.tardis.tvcatchup" name="TV Catchup Tardis Edition" version="1.3.4" provider-name="War Doctor, blxd">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.xbmcswift2" version="2.4.0"/>
+    <import addon="plugin.video.livestreamer" version="1.12.3"/>
+  </requires>
+ <extension point="xbmc.python.pluginsource" library="addon.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Live streams from TVCatchup.com</summary>
+    <disclaimer>May not work outside the UK/Ireland</disclaimer>
+    <platform>all</platform>
+  </extension>
+</addon>
+<addon id="script.tardis.tv" name="Tardis TV" version="1.0.8" provider-name="War Doctor">
+    <requires>
+        <import addon="xbmc.python" version="2.14.0"/>
+        <import addon="script.module.requests" version="2.3.0"/>
+        <import addon="script.tardisepg.tools" version="1.0.8"/>
+        <import addon="script.tardisepg" version="1.0.8"/>		
+        <import addon="plugin.program.super.favourites" version="1.0.43"/>
+    </requires>
+
+    <extension point="xbmc.python.script" library="default.py">
+        <provides>executable</provides>
+    </extension>
+
+    <extension point="xbmc.service" library="service.py" start="login" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">A powerful EPG add-on with many extra features. Streaming support via multiple live TV addons.</summary>
+        <description lang="en">A comprehensive EPG that is compatible with many popular live TV addons. [CR]Up to 7 days of listings with automatic triggering of your favourite live TV addons.[CR]As well as the EPG. Props to Spoyser, Dixie Dean and Twinther for the original code used in this guide.</description>
+        <platform>all</platform>
+  </extension>
+</addon>
+<addon id="script.tardisepg" name="Tardis EPG" version="1.0.8" provider-name="War Doctor">
+    <requires>
+        <import addon="xbmc.python" version="2.14.0"/>
+        <import addon="script.module.requests" version="2.3.0"/>
+        <import addon="script.module.elementtree" version="1.2.7"/>
+	<import addon="script.module.simplejson" version="3.3.0"/>
+    </requires>
+    <extension point="xbmc.python.module" library="addon.py"></extension>
+    <extension point="xbmc.service" library="service.py" start="login" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">A powerful EPG add-on with many extra features. Streaming support via multiple live TV addons.</summary>
+        <description lang="en">A comprehensive EPG that is compatible with many popular live TV addons. [CR]Up to 7 days of listings with automatic triggering of your favourite live TV addons.</description>
+        <description lang="es">TV Guide ofrece una visión general de lo que hay en la televisión ahora mismo, así no tienes que cambiar el canal en XBMC![CR]Los datos EPG pueden ser obtenidos de YouSee.tv, DR.dk, TvTid.dk, archivo XMLTV o de una fuente remota de JSON.[CR][CR]Navegue usando las teclas de flecha y cambie de página mediante canal + / -.[CR][CR]Si usted tiene comentarios o sugerencias para este complemente, no dude en participar en el debate de mi blog en http://tommy.winther.nu</description>
+        <platform>all</platform>
+        <language></language>
+        <license>GPLv2</license>
+    </extension>
+
+	<extension point="kodi.context.item" library="osd.py">        
+      <item>
+        <label>Tardis TV Mini-Guide</label>
+        <visible>true</visible>
+      </item>
+	</extension>
+</addon>
+<addon id="script.tardisepg.tools" name="Tardis TV Tools" version="1.0.8" provider-name="War Doctor, spoyser, DixieDean">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.requests" version="2.3.0"/>
+    
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video audio executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Tools for use with Tardis TV</summary>
+    <description lang="en">Tools for use with Tardis TV</description>
+    <platform>all</platform>
+    <language>en</language>
+    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+    <forum></forum>
+    <website></website>
+    <source></source>
+    <email></email>
+  </extension>
+</addon>
+</addons>

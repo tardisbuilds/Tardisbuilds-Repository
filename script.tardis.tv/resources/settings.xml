@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="31000">
+        <setting id="VERSION"    type="text"      label="Version"           default="0.0.0" visible="false"/>
+        <setting id="TTVSKIN"    type="text"      label="TTVSKINVersion"    default="2.1"   visible="false"/>
+        <setting id="EPGSKIN"    type="text"      label="EPGSKINVersion"    default="2.8"   visible="false"/>
+        <setting id="LOGOCOLOUR" type="text"      label="LogoColourVersion" default="1.9"   visible="false"/>
+        <setting id="LOGOWHITE"  type="text"      label="LogoWhiteVersion"  default="1.3"   visible="false"/>
+        <setting id="TTVUPDATE"  type="text"      label="TTVPythonVersion"  default="1.7"   visible="false"/>
+        <setting id="EPGUPDATE"  type="text"      label="EPGPythonVersion"  default="2.0"   visible="false"/>
+        <setting id="ADDONS"     type="text"      label="Addons"            default=""      visible="false"/>
+        <setting id="MOVIE"      type="text"      label="Movie"             default=""      visible="false"/>
+        <setting id="TV"         type="text"      label="TV"                default=""      visible="false"/>
+
+        <setting id="DSFTTVSKIN"    type="text"   label="dsfTTVSKIN"    default="0.0"   visible="false"/>
+        <setting id="DSFEPGSKIN"    type="text"   label="dsfEPGSKIN"    default="0.0"   visible="false"/>
+        <setting id="DSFLOGOS"      type="text"   label="dsfLogos"      default="0.0"   visible="false"/>
+        <setting id="DSFOTTUPDATE"  type="text"   label="dsfOTTPython"  default="0.0"   visible="false"/>
+        <setting id="DSFEPGUPDATE"  type="text"   label="dsfEPGPython"  default="0.1"   visible="false"/>
+        <setting id="DSFUPDATE"     type="text"   label="dsfPython"     default="0.0"   visible="false"/>
+        <setting id="DSFKODISKIN"   type="text"   label="dsfKodiSkin"   default="0.0"   visible="false"/>
+
+        <setting id="FIRSTRUN"   type="bool"      label="FIRSTRUN" default="false" visible="false" />
+        <setting id="MIGRATED"   type="bool"      label="MIGRATED" default="false" visible="false" />
+        <setting id="ttv.url"   type="labelenum" label="TTV URL"  default="kodi"  values="kodi|other"  visible="false" />
+        
+        <setting id="dummy"      type="action" label="Click to - [COLOR orange][B]Open Main Settings[/B][/COLOR]" action="XBMC.RunScript(special://home/addons/script.tardis.tv/openSettings.py)" option="close" />
+        <setting id="SKIN"       type="select" label="31004" source="../../userdata/addon_data/script.tardis.tv/skins/" mask="/" default="Tardis - Red"/>    
+        
+        <setting id="autoStart"  type="bool"   label="Start Automatically (requires reboot)"     default="false" visible="true"/>
+        <setting id="UseKodiLib" type="bool"   label="Use Kodi Libraries (Movies and TV Shows)"  default="false" visible="true"/>
+        
+        <setting id="ADDMORE"   type="enum"   label="31006" lvalues="31007|31008|31009" default="2"/>
+         
+        <setting id="AUTOSTREAM" type="bool"   label="Automatically Stream Last Channel Watched" default="false" visible="true"/>
+        <!-- <setting                 type="lsep"   label=""      visible="true" /> -->
+        <setting id="KIOSKMODE"  type="bool"   label="Kiosk Mode" default="false" visible="true"/>
+        <setting id="NOHOME"     type="bool"   label="31005" default="false" visible="true"/>
+        <setting id="PLAYBACK"   type="enum"   label="31001" lvalues="31002|31003" default="1" visible="false"/>
+    </category>
+
+    <category label="More Features">
+        <setting id="HOTKEY"            label="Click to - [COLOR orange][B]Set Mini-Guide Hot Key[/B][/COLOR]" type="action" action="XBMC.RunScript(special://home/addons/script.tardisepg/keyProgrammer.py,zTTV_hotkey.xml,XBMC.RunScript(special://home/addons/script.tardisepg/hotkey.py),hot_key,the Mini-Guide)"/>
+        <setting id="hot_key"           type="text" label="Programmed HotKey"    default="" visible="false"/>
+        <setting id="dummy"             label="Click to - [COLOR orange][B]Reset Mini-Guide Hot Key[/B][/COLOR]"   type="action" action="XBMC.RunScript(special://home/addons/script.tardisepg/resetHotkey.py,zTTV_hotkey.xml)" />
+
+        <setting label=""               type="lsep" visible="true" />
+
+        <setting id="FSHOTKEY"          label="Click to - [COLOR orange][B]Set Full-Screen Hot Key[/B][/COLOR] (picture-in-picture)" type="action" action="XBMC.RunScript(special://home/addons/script.tardisepg/keyProgrammer.py,zTTV_toggle.xml,fullscreen,,Toggle Full Screen)"/>
+        <setting id="dummy"             label="Click to - [COLOR orange][B]Reset Full-Screen Hot Key[/B][/COLOR]"                    type="action" action="XBMC.RunScript(special://home/addons/script.tardisepg/resetHotkey.py,zTTV_toggle.xml)" />
+
+        <setting label=""               type="lsep" visible="true" />
+
+        <setting id="SINGLE_CAT"    label="[B]Single Active Category Mode[/B]"                                 type="bool"   default="true"  visible="true"/>
+        <setting id="rename.fave"       label="Click to - [COLOR orange][B]Rename Favourites Category[/B][/COLOR]" type="action" action="XBMC.RunPlugin(plugin://script.tardisepg.tools/?mode=1940)" visible="true" option="close"/>
+        <setting id="FAVOURITE"         label="Current Favourites category name:"                                  type="text"   default=" Favourites"  visible="true" />
+    </category>
+
+    <category label="Maintenance">
+        <setting id="DEBUG" label="[B]Enable TTV Debug Mode[/B]" type="bool" default="true"/>
+        <setting id="dummy" label="Click to - [COLOR orange][B]Upload log[/B][/COLOR]" type="action" action="XBMC.RunScript(special://home/addons/script.tardisepg/uploadLog.py)" option="close" />
+        <setting id="skip_oldlog" type="bool" label="Always skip Kodi.old.log (log from previous run)" default="true" visible="false"/>
+        <setting id="dummy" label="Click to - [COLOR orange][B]Check Tardis TV Version[/B][/COLOR]" type="action" action="XBMC.RunScript(special://home/addons/script.tardisepg/getVersion.py)" />
+        <setting label=""   type="lsep" visible="true" />
+        <setting id="dummy" label="Click to - [COLOR orange][B]Reset Programme Listings[/B][/COLOR]" type="action" action="XBMC.RunScript(special://home/addons/script.tardisepg/deleteDB.py)" />
+        <setting id="dummy" label="Click to - [COLOR orange][B]Reset Channels[/B][/COLOR]" type="action" action="XBMC.RunScript(special://home/addons/script.tardisepg/resetChannels.py)" />
+        <setting id="dummy" label="Click to - [COLOR orange][B]Reset All[/B][/COLOR]" type="action" action="XBMC.RunScript(special://home/addons/script.tardisepg/resetAddon.py)" />
+    </category>
+    
+</settings>
