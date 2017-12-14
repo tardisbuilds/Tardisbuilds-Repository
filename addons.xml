@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.program.chameleoncircuit" name="Chameleon Circuit" version="1.0.2" provider-name="Tardis Builds">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -13,6 +14,7 @@
     <platform>all</platform>
   </extension>
 </addon>
+<?xml version="1.0" encoding="UTF-8"?>
 <addon id="plugin.program.tardis.notifications" version="1.0.2"
        name="Tardis Notify" provider-name="Tardisbuilds">
   <requires>
@@ -36,6 +38,28 @@
   	<email></email>
   </extension>
 </addon>
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="plugin.program.tardis-fixtures"
+version="1.0.26"
+name="Tardis Fixtures"
+provider-name="Wardoctor, primaeval">
+<requires>
+  <import addon="xbmc.python" version="2.20.0"/>
+  <import addon="script.module.xbmcswift2" version="2.4.0"/>
+  <import addon="script.module.requests" version="2.9.1" />
+  <import addon="script.module.beautifulsoup4" />
+  <import addon="script.module.dateutil" version="2.4.2" />
+</requires>
+<extension point="xbmc.python.pluginsource" library="main.py">
+  <provides>executable</provides>
+</extension>
+<extension point="xbmc.addon.metadata">
+  <summary lang="en">Tardis Fixtures</summary>
+  <description lang="en">Tardis Fixtures with Channel Information.</description>
+  <disclaimer lang="en">This addon provides NO stream content</disclaimer>
+</extension>
+</addon>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.program.TardisWizard" name="Tardis Wizard" version="2.0.9" provider-name="TheDoctor">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -50,6 +74,7 @@
     <platform>all</platform>
   </extension>
 </addon>
+<?xml version="1.0" encoding="UTF-8"?>
 <addon id="plugin.video.addons.ini.creator"
 version="0.0.9"
 name="addons.ini Creator"
@@ -68,6 +93,7 @@ provider-name="primaeval">
   <disclaimer lang="en">.</disclaimer>
 </extension>
 </addon>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.CombatCorner"
 	name="Combat Corner"
 	version="1.0.1"
@@ -86,6 +112,7 @@ provider-name="primaeval">
     <platform>all</platform>
   </extension>
 </addon>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.HuntersHideout"
 	name="Hunters Hideout"
 	version="1.0.3"
@@ -104,52 +131,7 @@ provider-name="primaeval">
     <platform>all</platform>
   </extension>
 </addon>
-<addon id="plugin.video.livestreamer" name="livestreamer" version="1.12.3" provider-name="blxd">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.xbmcswift2" version="2.4.0"/>
-    <import addon="script.module.requests" version="2.6.0"/>
-    <import addon="script.module.futures" version="2.2.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="addon.py" />
-  <extension point="xbmc.service" library="service.py" start="startup"/>
-  <extension point="xbmc.python.module" library="resources/site-packages/livestreamer/src/livestreamer" />
-  <extension point="xbmc.addon.metadata">
-    <platform>all</platform>
-    <language></language>
-    <summary>livestreamer wrapper</summary>
-    <description>Plays videos from sites that are supported by livestreamer</description>
-    <platform>all</platform>
-    <license>Simplified BSD</license>
-    <source>https://github.com/chrippa/livestreamer.git</source>
-    <website>http://livestreamer.io</website>
-  </extension>
-</addon>
-<addon id="plugin.video.master" version="2.0.6" name="Master" provider-name="Wardoctor">
-	<requires>
-		<import addon="xbmc.python" version="2.19.0" />
-		<import addon="script.master.artwork" version="1.0.0" />
-		<import addon="script.master.metadata" version="1.0.0" />
-		<import addon="script.module.urlresolver" version="3.0.33" />
-		<import addon="script.module.metahandler" version="2.9.0" />
-		<import addon="script.module.liveresolver" version="0.1.24"/>
-		<import addon="script.video.F4mProxy" version="2.2.3"/>
-		<import addon="script.module.pyxbmct" version="1.1.4" />
-		<import addon="plugin.video.youtube" version="5.2.1" />
-	</requires>
-	<extension point="xbmc.python.pluginsource" library="master.py">
-		<provides>video</provides>
-	</extension>
-	<extension point="xbmc.service" library="service.py" start="startup" />
-	<extension point="xbmc.addon.metadata">
-		<summary lang="en">Master</summary>
-		<platform>all</platform>
-		<forum>https://www.facebook.com/groups/tardisbuilds/</forum>
-		<website>https://www.facebook.com/groups/tardisbuilds/</website>
-		<source></source>
-		<news>24/7 Fixed</news>
-	</extension>
-</addon>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="plugin.video.master.catchup" name="Master Catchup" version="1.0.5" provider-name="Wardoctor">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -163,41 +145,66 @@ provider-name="primaeval">
     <platform>all</platform>
   </extension>
 </addon>
-<addon id="plugin.video.master.scraper" name="Master Scraper" version="1.0" provider-name="Wardoctor, sClarke">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-	<import addon="script.module.requests" />
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">Live Scraper for Master</summary>
-    <description lang="en">Live Scraper for Master</description>
-	<disclaimer lang="en">The author does not host or own any content found within this Addon. The Author is not connected to or in any other way affiliated with Kodi, Team Kodi, or the XBMC Foundation.</disclaimer>
-    <platform>all</platform>
-  </extension>
-</addon>
-<addon id="plugin.video.stargate-streams" version="2.0.5" name="Stargate Streams" provider-name="Wardoctor">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.master.reborn" version="1.0.6" name="Master Reborn" provider-name="Wardoctor">
     <requires>
-        <import addon="xbmc.python" version="2.1.0"/>        
+        <import addon="xbmc.python" version="2.19.0"/>
+        <import addon="script.master-reborn.artwork" version="1.0.1"/>
+		<import addon="script.master.metadata" version="1.0.1"/>
+        <import addon="script.module.urlresolver" version="2.10.0"/>
+        <import addon="script.module.metahandler" version="2.9.0"/>
+        <import addon="script.module.requests" version="2.12.4"/>
+        <import addon="script.module.beautifulsoup" version="3.2.1"/>
+        <import addon="script.module.master.common" version="1.1.2"/>
+        <import addon="script.module.futures" version="2.2.0"/>
+        <import addon="script.module.nanscrapers" version="0.5.35"/>
     </requires>
-    <extension point="xbmc.python.pluginsource" library="default.py">
+    <extension point="xbmc.python.pluginsource" library="master.py">
         <provides>video</provides>
     </extension>
     <extension point="xbmc.addon.metadata">
-        <summary>Stargate Streams</summary>
-        <description>Stargate Streams</description>
-        <disclaimer>The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content providers.</disclaimer>
-        <language>en</language>
+        <summary lang="en">Master Reborn movies and TV shows</summary>
+        <description lang="en">Watch movies and TV shows in high quality! Please note that this addon is not an official part of the Kodi media player and is therefore not to be mentioned within Kodi's official support channels. This addon has nothing to do with the media player itself, nor its intended use, it is simply a third party plugin which has been added to your system.</description>
+        <disclaimer lang="en">The author does not host any content, nor is he affiliated with any of the content providers.</disclaimer>
         <platform>all</platform>
-        <source></source>
-        <email></email>
+        <news></news>
+        <assets>
+            <icon>icon.png</icon>
+            <fanart>fanart.jpg</fanart>
+        </assets>
     </extension>
 </addon>
-<addon id="plugin.video.tardis.tvcatchup" name="TV Catchup Tardis Edition" version="1.3.6" provider-name="War Doctor, beardypig, blxd">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.missy" name="Missy" version="1.0.2" provider-name="Wardoctor, midraal">
+    <requires>
+        <import addon="xbmc.python" version="2.19.0" />
+        <import addon="script.module.nanscrapers" version="0.5.5" />
+        <import addon="script.module.python.koding.aio" version="0.9.6.6" />
+        <import addon="script.module.beautifulsoup" version="3.2.1" />
+        <import addon="script.module.requests" version="2.9.1" />
+        <import addon="script.module.addon.common" version="2.0.0" />
+        <import addon="script.module.xmltodict" version="0.9.0" />
+        <!--<import addon="script.module.web-pdb" version="1.0"/>-->
+        <import addon="script.module.urlresolver" version="1.2.0" />
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>audio video</provides>
+    </extension>
+    <extension point="xbmc.service" library="service.py" start="[login|startup]" />
+    <extension point="xbmc.addon.metadata">
+        <summary lang="en">I'm in no hurry, I've got all day. And I'm not going to kill you until you say..something...nice.</summary>
+        <description lang="en">Missy [COLOR red]##### CURRENTLY UNDER CONSTRUCTION #####[/COLOR]</description>
+        <platform>all</platform>
+        <forum></forum>
+        <website></website>
+        <video_guide></video_guide>
+        <video_preview></video_preview>
+    </extension>
+</addon>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.tardis.tvcatchup" name="TV Catchup Tardis Edition" version="1.3.7" provider-name="Wardoctor, beardypig">
   <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="xbmc.python" version="2.19.0"/>
     <import addon="script.module.six" version="1.9.0"/>
   </requires>
  <extension point="xbmc.python.pluginsource" library="addon.py">
@@ -207,44 +214,59 @@ provider-name="primaeval">
     <summary lang="en">Live streams from TVCatchup.com</summary>
     <disclaimer>May not work outside the UK</disclaimer>
     <platform>all</platform>
+    <forum></forum>
+    <source></source>
   </extension>
 </addon>
-<addon id="plugin.video.tardis-fixtures"
-version="1.0.23"
-name="Tardis Fixtures"
-provider-name="Wardoctor">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-  <summary lang="en">Tardis Fixtures</summary>
-  <description lang="en">Sports Fixtures with Channel Linking.</description>
-  <disclaimer lang="en"></disclaimer>
-	<platform>all</platform>
-    <assets>
-        <icon>icon.png</icon>
-        <fanart>fanart.jpg</fanart>
-    </assets>
-  </extension>
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="plugin.video.tfixtures.listings"
+version="1.0.3"
+name="Tardis Fixtures Listings"
+provider-name="Wardoctor, primaeval">
+<requires>
+  <import addon="xbmc.python" version="2.20.0"/>
+  <import addon="script.module.xbmcswift2" version="2.4.0"/>
+  <import addon="script.module.requests" version="2.9.1" />
+</requires>
+<extension point="xbmc.python.pluginsource" library="main.py">
+  <provides>video</provides>
+</extension>
+<extension point="xbmc.service" library="service.py" start="login"/>
+<extension point="xbmc.addon.metadata">
+  <summary lang="en">Tardis Fixtures Listings</summary>
+  <description lang="en">Tardis Fixtures Listings.</description>
+  <disclaimer lang="en">.</disclaimer>
+</extension>
 </addon>
-<addon id="plugin.video.ustvnow.wd" name="USTVnow" provider-name="Wardoctor, mhancoc7" version="29.6.3">
-    <requires>
-        <import addon="xbmc.python" version="2.1.0" />
-    </requires>
-    <extension library="main.py" point="xbmc.python.pluginsource">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <summary>Watch Major American Television Networks Live for Free! USTV Now - Wardoctor Patched</summary>
-        <description>Please visit http://facebook.com/groups/tardisbuilds/ for addon support! Watch Major American Television Networks Live! Entirely Legal and Free! You can also record content with a paid DVR account or by using DVR referral points. Signup for a free account through the following link today: http://watch.ustvnow.com </description>
-        <platform>all</platform>
-        <forum></forum>
-        <website>http://ustvnow.com</website>
-    </extension>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.BadWolf" name="BadWolf Repository" version="1.0.1" provider-name="Wardoctor">
+	<extension point="xbmc.addon.repository" name="BadWolf Repository">
+		<info compressed="false">https://raw.githubusercontent.com/TheWardoctor/BadWolf/master/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/TheWardoctor/BadWolf/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/TheWardoctor/BadWolf/master/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>BadWolf Repository, don't like it? Go away, problem solved.</summary>
+		<description></description>
+		<disclaimer></disclaimer>
+		<platform>all</platform>
+	</extension>
 </addon>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="repository.SG" name="Stargate Repository" version="1.0.1" provider-name="Wardoctor">
+	<extension point="xbmc.addon.repository" name="Stargate Repository">
+		<info compressed="false">https://raw.githubusercontent.com/TheWardoctor/SG/master/addons.xml</info>
+		<checksum>https://raw.githubusercontent.com/TheWardoctor/SG/master/addons.xml.md5</checksum>
+		<datadir zip="true">https://raw.githubusercontent.com/TheWardoctor/SG/master/</datadir>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Stargate Repository</summary>
+		<description></description>
+		<disclaimer></disclaimer>
+		<platform>all</platform>
+	</extension>
+</addon>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="repository.Tardisrepo" name="Tardis Repository" version="1.5" provider-name="The Tenth Doctor">
 	<extension point="xbmc.addon.repository" name="Tardis Repository">
 		<info compressed="false">https://raw.githubusercontent.com/tardisbuilds/Tardisbuilds-Repository/master/addons.xml</info>
@@ -257,17 +279,7 @@ provider-name="Wardoctor">
 		<platform>all</platform>
 	</extension>
 </addon>
-<addon id="script.master.artwork" version="1.0.0" name="Master Artwork" provider-name="Wardoctor">
-	<requires>
-		<import addon="xbmc.python" version="2.19.0"/>
-	</requires>
-	<extension point="xbmc.python.module" library="lib" />
-	<extension point="xbmc.addon.metadata">
-		<summary>Themes for the Master Addon</summary>
-		<description>Themes for Master are maintained separately to make distribution of the the addon itself easier/faster.</description>
-		<platform>all</platform>
-	</extension>
-</addon>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.master.metadata" version="1.0.1" name="Master Metadata" provider-name="Wardoctor">
 	<requires>
 		<import addon="xbmc.python" version="2.19.0"/>
@@ -279,6 +291,22 @@ provider-name="Wardoctor">
 		<platform>all</platform>
 	</extension>
 </addon>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.master-reborn.artwork" version="1.0.1" name="Master Reborn Artwork" provider-name="Wardoctor">
+	<requires>
+		<import addon="xbmc.python" version="2.19.0"/>
+	</requires>
+	<extension point="xbmc.python.script" library="default.py">
+		<provides>executable</provides>
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary>Themes for the Master Reborn Addon</summary>
+		<description></description>
+		<platform>all</platform>
+		<news>Added new artwork</news>
+	</extension>
+</addon>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.module.liveresolver" 
      name="LiveResolver" 
      version="0.1.49" 
@@ -297,6 +325,49 @@ provider-name="Wardoctor">
     <description lang="en"></description>    
   </extension>
 </addon>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.master.common" name="Master Reborn Common Libraries" version="1.1.2" provider-name="Wardoctor">
+	<requires>
+		<import addon="xbmc.python" version="2.1.0" />
+		<import addon="script.module.six" />
+		<import addon="script.module.metahandler" />
+		<import addon="script.module.beautifulsoup" />
+	</requires>
+	<extension point="xbmc.python.module" library="lib" />
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<summary lang="en">Collection of modules used by Master Reborn</summary>
+		<description lang="en">Collection of modules used by Master Reborn</description>
+		<license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
+	</extension>
+</addon>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.nanscrapers" name="NaN Scrapers" version="0.5.41" provider-name="Team NaN">
+        <requires>
+                <import addon="xbmc.python" version="2.1.0"/>
+                <import addon="script.module.beautifulsoup" version="3.2.1"/>
+                <import addon="script.module.futures" version="2.2.0"/>
+                <import addon="script.module.requests"/>
+                <import addon="script.module.six"/>
+                <!--<import addon="script.module.urlresolver" version="3.0.0" optional="true"/>-->
+                <!--<import addon="script.mrknow.urlresolver" version="2016.10.30.2" optional="true"/>-->
+        </requires>
+        <extension point="xbmc.python.module" library="lib"/>
+        <extension point="xbmc.python.pluginsource" library="lib/default.py">
+                <provides>executable</provides>
+        </extension>
+        <extension point="xbmc.addon.metadata">
+                <platform>all</platform>
+                <summary lang="en">Scrape common video host for URL's to be playable in XBMC/Kodi.</summary>
+                <description lang="en">Scrape common video host for URL's to be playable in XBMC/Kodi, simplifying addon development of video plugins requiring multi video hosts.
+                </description>
+                <license>GPL v3</license>
+                <source>https://github.com/noobsandnerds/noobsandnerds/tree/master/script.module.nanscrapers</source>
+                <forum>http://www.noobsandnerds.com/support/showthread.php?tid=17212</forum>
+                <website>http://noobsandnerds.com</website>
+        </extension>
+</addon>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.module.pyxbmct"
    name="PyXBMCt"
    version="1.2.0"
@@ -318,7 +389,8 @@ provider-name="Wardoctor">
     <source>https://github.com/romanvm/script.module.pyxbmct</source>
   </extension>  
 </addon>
-<addon id="script.module.urlresolver" name="URLResolver" version="3.0.38" provider-name="tvaddons.ag, Eldorado, jsergio">
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.module.urlresolver" name="URLResolver" version="4.0.12" provider-name="Eldorado, tknorris, tvaddons">
 	<requires>
 		<import addon="xbmc.python" version="2.1.0" />
 		<import addon="plugin.video.youtube" optional="true" />
@@ -330,35 +402,14 @@ provider-name="Wardoctor">
 	<extension point="xbmc.addon.metadata">
 		<platform>all</platform>
 		<summary lang="en">Resolve common video host URL's to be playable in XBMC/Kodi.</summary>
+		<summary lang="hr">Prilagodi najčešće URL-ove video izvora kako bi radili u XBMC/Kodiju.</summary>
 		<description lang="en">Resolve common video host URL's to be playable in XBMC/Kodi, simplify addon development of video plugins requiring multi video hosts.</description>
+		<description lang="hr">Prilagodi najčešće URL-ove video izvora kako bi radili u XBMC/Kodiju, pojednostavnjuje razvoj priključaka za video dodatke koji zahtjevaju višestruke video izvore.</description>
+        <forum>https://www.tvaddons.co/forums</forum>
+        <website>https://www.tvaddons.co</website>
 	</extension>
 </addon>
-<addon id="script.tvguide.tardis" name="TV Guide - Tardis" version="1.0.23" provider-name="Wardoctor, Wardoctor">
-    <requires>
-        <import addon="xbmc.python" version="2.25.0"/>
-        <import addon="script.module.simplejson" version="3.3.0"/>
-        <import addon="script.module.requests" version="2.9.1" />
-        <import addon="script.module.dateutil" version="2.4.2" />
-        <import addon="script.module.pil" />
-        <import addon="script.module.beautifulsoup4" />
-    </requires>
-    <extension point="xbmc.python.script" library="addon.py">
-            <provides>executable</provides>
-    </extension>
-    <extension point="xbmc.service" library="service.py" start="login"/>
-    <extension point="xbmc.addon.metadata">
-        <description lang="en">Tardis TV Guide. Thanks for the major contributions from: Wardoctor,iainmacleod, im85288, RayW1986, bluezed, andy, Zomboided, tycoo, kjb86.</description>
-        <disclaimer lang="en">Based on the original TV Guide addon by twinther, FTV Guide and Midraal's fork.</disclaimer>
-        <language></language>
-        <platform>all</platform>
-        <license>GPLv2</license>
-        <forum>https://buildscommunity.info</forum>
-        <source></source>
-        <website></website>
-        <email>wardoctor@tardisbuilds.com</email>
-        <news>version 1.0.23 - Meta Search, Multiple Catchup, Code Tweaks</news>
-    </extension>
-</addon>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addon id="script.video.F4mProxy" 
 	     name="F4mProxy" 
 	     version="2.8.7" 

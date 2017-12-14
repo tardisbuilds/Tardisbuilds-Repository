@@ -1,0 +1,23 @@
+[B]1.0.6[/B]
+- Rearranged Trakt Lists
+- Fixed Channels
+- Merry Christmas
+
+[B]1.0.5[/B]
+- Removed VIP menu items from Trakt.
+
+[B]1.0.4[/B]
+- Added Trakt intergration
+
+[B]1.0.3[/B]
+- Code Updated
+- Dependency changes
+- Better compatability for Elysium on system
+
+[B]1.0.2[/B]
+- Code Tweaks
+- API's Updated
+- Graphics Updated (Temp)
+
+[B]1.0.1[/B]
+- Initial Release

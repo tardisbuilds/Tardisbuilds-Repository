@@ -1,0 +1,2 @@
+Version 1.0.3
+- Code tweaks and enhancements for Tardis Fixtures.

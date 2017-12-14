@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-
-<settings>
-    <category label="Tardis Fixtures INI Selector">
-        <setting id="addons.ini.type" label="Select INI Type (Built In or Custom)" type="enum" default="0" lvalues="Built in INI|Custom INI File|"/>
-        <setting id="addons.ini.file" label="[COLOR blue][B]Select custom ini file[/B][/COLOR]" type="file" visible="eq(-1,1)" default='special://home/userdata/addons_custom.ini' />
-    </category>
-</settings>

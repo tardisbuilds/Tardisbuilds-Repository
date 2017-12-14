@@ -31,6 +31,8 @@ import re
 import urlparse
 import sys
 import os
+import xbmc
+import xbmcvfs
 import xbmcgui
 import common
 from hmf import HostedMediaFile
@@ -65,17 +67,8 @@ def load_external_plugins():
                 sys.modules[mod_name] = imp
                 common.logger.log_debug('Loaded %s as %s from %s' % (imp, mod_name, filename))
 
-def relevant_resolvers(domain=None, include_universal=None, include_external=False, include_disabled=False, include_xxx=False, order_matters=False):
-    if include_xxx:
-        import xbmc
-        smu_xxx_id = "script.module.urlresolver.xxx"
-        if xbmc.getCondVisibility('System.HasAddon(%s)' % smu_xxx_id):
-            import xbmcaddon
-            smu_xxx_path = xbmcaddon.Addon(smu_xxx_id).getAddonInfo("path")
-            smu_xxx_plugins = os.path.join(smu_xxx_path,'resources/plugins/')
-            add_plugin_dirs(smu_xxx_plugins)
-        
-    if include_external or include_xxx:
+def relevant_resolvers(domain=None, include_universal=None, include_external=False, include_disabled=False, order_matters=False):
+    if include_external:
         load_external_plugins()
     
     if isinstance(domain, basestring):
@@ -98,7 +91,7 @@ def relevant_resolvers(domain=None, include_universal=None, include_external=Fal
     common.logger.log_debug('Relevant Resolvers: %s' % (relevant))
     return relevant
 
-def resolve(web_url, include_xxx=False):
+def resolve(web_url):
     '''
     Resolve a web page to a media stream.
 
@@ -128,7 +121,7 @@ def resolve(web_url, include_xxx=False):
         If the ``web_url`` could be resolved, a string containing the direct
         URL to the media file, if not, returns ``False``.
     '''
-    source = HostedMediaFile(url=web_url, include_xxx=include_xxx)
+    source = HostedMediaFile(url=web_url)
     return source.resolve()
 
 def filter_source_list(source_list):
